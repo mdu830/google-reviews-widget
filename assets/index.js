@@ -66,9 +66,8 @@ $(document).ready(function () {
     // append rating to html document
     const ratingCol = $(`
     <div class="col-sm">
-        <div class="p-2 cont bg-light">
+        <div class="p-2 cont">
             <img id="gLogo" src="assets/images/Google-Reviews-${reviews.result.rating}.png" />
-            <p class="rating">${reviews.result.rating}/5<p>
         </div>
     </div>
     `)
@@ -76,15 +75,16 @@ $(document).ready(function () {
 
     // append reviews to html document
     $.each(reviews.result.reviews, function (key, value) {
-
+        console.log()
         const $reviewCol = $(`            
-            <div class="col-lg m-1 border container-fluid cont2 bg-light">
+            <div class="col-lg m-1 border cont2 bg-light">
+            
                 <div class="row">
-                    <div class="col-3">
+                    <div class="col-3 pt-2">
                         <img class="userPicture" src='${value.profile_photo_url}' />
                     </div>
                     <div class="col-9">
-                        <div class="row">
+                        <div class="row pt-2">
                             <h3 class="user">${value.author_name}</h3>
                         </div>
                         <div class="row">
@@ -95,9 +95,47 @@ $(document).ready(function () {
                 <div class="row">
                     <img class="starReview" src='./assets/images/${value.rating}-star.png' />
                 </div>
-                <div class="row p-2">
-                    <p class="description pt-1 p-2">${value.text}</p>
+                <div class="row pt-3">
+                    <button 
+                    class="btn btn-sm" 
+                    type="button" 
+                    data-bs-toggle="modal" 
+                    data-bs-target="#collapse${key}" 
+                    aria-expanded="false" 
+                    >read more</button>
                 </div>
+
+                <div class="modal fade" id="collapse${key}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <div class="col-4">
+                                    <img class="userPictureModal" src='${value.profile_photo_url}' />
+                                </div>
+                                <div class="col">
+                                    <div class="row">
+                                        <h3 class="userH3">${value.author_name}</h3>
+                                    </div>
+                                    <div class="row">
+                                        <h5 class="date">${value.relative_time_description}</h5>
+                                    </div>
+                                    <div class="row">
+                                        <img class="starReviewModal" src='./assets/images/${value.rating}-star.png' />
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                            </div>
+                            <div class="modal-body p-4">
+                                ${value.text}
+                            </div>
+                            <div class="modal-footer">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         `)
         $('.widget').append($reviewCol)
