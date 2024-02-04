@@ -67,7 +67,7 @@ $(document).ready(function () {
     const ratingCol = $(`
     <div class="col-sm">
         <div class="p-2 cont">
-            <img id="gLogo" src="assets/images/Google-Reviews-${reviews.result.rating}.png" />
+            <img id="gLogo" src="https://github.com/mdu830/google-reviews-widget/blob/main/assets/images/Google-Reviews-${reviews.result.rating}.png?raw=true" />
         </div>
     </div>
     `)
@@ -93,7 +93,7 @@ $(document).ready(function () {
                     </div>
                 </div>
                 <div class="row">
-                    <img class="starReview" src='./assets/images/${value.rating}-star.png' />
+                    <img class="starReview" src='https://github.com/mdu830/google-reviews-widget/blob/main/assets/images/5-star.png?raw=true' />
                 </div>
                 <div class="row pt-3">
                     <button 
